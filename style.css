@@ -331,4 +331,22 @@ body.gameboy{
   border: 0;
   padding: 0;
 }
+/* 只有當螢幕寬度小於 600px (手機) 時，才會執行裡面的內容 */
+@media (max-width: 600px) {
+    .container {
+        width: 95%; /* 讓容器佔滿手機寬度 */
+        padding: 10px;
+    }
 
+    .button-group { 
+        display: flex;
+        flex-wrap: wrap; /* 讓按鈕如果太擠，會自動換到下一行 */
+        gap: 10px; /* 按鈕之間的間距 */
+        justify-content: center;
+    }
+
+    button {
+        width: 45%; /* 讓按鈕在手機上一排兩個 */
+        font-size: 14px; /* 稍微縮小字體 */
+    }
+}
