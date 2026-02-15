@@ -1,0 +1,19 @@
+{
+  "name": "像素 EXP 計時器",
+  "short_name": "EXP Timer",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "display_override": ["standalone"],
+  "theme_color": "#0f380f",
+  "background_color": "#0f380f",
+  "description": "像素風 EXP 計時器：多項目管理、等級系統、離線支援與 PWA 安裝。",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

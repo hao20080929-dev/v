@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>像素 EXP 計時器</title>
+  <meta name="description" content="像素風 EXP 計時器：多項目管理、等級系統、離線支援與 PWA 安裝。">
+  <meta property="og:title" content="像素 EXP 計時器">
+  <meta property="og:description" content="像素風 EXP 計時器：多項目管理、等級系統、離線支援與 PWA 安裝。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="icon.svg">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#0f380f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="gameboy">
+  <div class="screen-frame nes-container is-dark with-title" id="app">
+    <p class="title">累積你的經驗值吧！</p>
+    <header class="topbar">
+      <button id="btn-home" class="nes-btn">項目</button>
+      <div class="topbar-right">
+        <button id="btn-backup" class="nes-btn is-primary"><span class="btn-icon">💾</span><span>存取檔案</span></button>
+        <label class="nes-btn is-primary file-btn" for="file-import"><span class="btn-icon">📁</span><span>讀取檔案</span></label>
+        <input id="file-import" class="file-input" type="file" accept="application/json">
+        <button id="btn-install" class="nes-btn is-success install-btn" type="button" hidden>下載 App</button>
+        <button id="btn-settings" class="nes-btn is-success">設定</button>
+      </div>
+    </header>
+    <main class="screen" id="screen">
+      <section id="view-list" class="view">
+        <div class="list-actions">
+          <button id="btn-add-item" class="nes-btn is-success">新增項目</button>
+        </div>
+        <div id="items" class="items"></div>
+      </section>
+
+      <section id="view-timer" class="view is-hidden" aria-hidden="true">
+        <div class="timer-header">
+          <button id="btn-back" class="nes-btn">返回</button>
+          <div class="active-item">
+            <span id="active-emoji" class="active-emoji"></span>
+            <span id="active-name" class="active-name"></span>
+            <button id="btn-edit-item" class="nes-btn is-primary btn-compact" type="button">修改</button>
+          </div>
+        </div>
+
+        <div class="timer-box nes-container is-dark">
+          <div id="timer" class="timer">000:000:00:00:00</div>
+          <div class="scale-label">年 日 時 分 秒</div>
+        </div>
+
+        <div class="controls">
+          <button id="btn-start" class="nes-btn is-success">開始</button>
+          <button id="btn-pause" class="nes-btn is-warning">暫停</button>
+        </div>
+
+        <div class="level-box nes-container is-dark">
+          <div class="level-line">
+            <span>LV</span>
+            <span id="level" class="level-value">0</span>
+            <span id="level-next" class="level-next"></span>
+          </div>
+          <progress id="level-progress" class="nes-progress is-primary" value="0" max="100"></progress>
+        </div>
+
+        <div id="exp-bar" class="exp-bar"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="dialog-add-item" class="nes-dialog is-dark">
+    <form method="dialog" class="dialog-form">
+      <p id="dialog-item-title" class="title">新增項目</p>
+      <div class="nes-field">
+        <label for="item-name">名稱</label>
+        <input id="item-name" class="nes-input is-dark" type="text" maxlength="24" autocomplete="off">
+      </div>
+      <div class="nes-field">
+        <label for="item-emoji">像素 Emoji（可選）</label>
+        <div class="nes-select is-dark">
+          <select id="item-emoji">
+            <option value="">無</option>
+            <option value="🏃">🏃 跑步</option>
+            <option value="💻">💻 開發</option>
+            <option value="📚">📚 讀書</option>
+            <option value="🎮">🎮 遊戲</option>
+            <option value="🎨">🎨 繪圖</option>
+          </select>
+        </div>
+      </div>
+      <menu class="dialog-menu">
+        <button class="nes-btn">取消</button>
+        <button id="btn-save-item" class="nes-btn is-primary" value="confirm">新增</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <dialog id="dialog-settings" class="nes-dialog is-dark">
+    <form method="dialog" class="dialog-form">
+      <p class="title">設定</p>
+      <div class="settings-grid">
+        <div class="nes-field">
+          <label for="color-bg">主背景色</label>
+          <input id="color-bg" class="color-input" type="color">
+        </div>
+        <div class="nes-field">
+          <label for="color-glow">發光文字色</label>
+          <input id="color-glow" class="color-input" type="color">
+        </div>
+      </div>
+      <menu class="dialog-menu">
+        <button class="nes-btn is-primary">關閉</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="main.js"></script>
+</body>
+</html>
