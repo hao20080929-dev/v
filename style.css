@@ -26,7 +26,8 @@ body.gameboy{
   image-rendering: pixelated;
   display: grid;
   place-items: center;
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   padding: 18px;
 }
 
@@ -116,9 +117,10 @@ body.gameboy{
 }
 
 .controls{
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 12px;
-  justify-content: center;
+  width: 100%;
 }
 
 .controls .nes-btn{
@@ -160,6 +162,14 @@ body.gameboy{
 
 .install-btn[hidden]{
   display: none !important;
+}
+
+.container{
+  width: 95%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: clamp(10px, 3vw, 25px);
+  display: block;
 }
 
 .view{
@@ -281,6 +291,50 @@ body.gameboy{
   padding: 6px 10px;
 }
 
+.button-group{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.timer-section{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.timer-display{
+  font-size: clamp(1.8rem, 10vw, 6rem);
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media (min-width: 768px){
+  .timer-section{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  .timer-section .timer-header{
+    flex: 1 1 220px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .timer-section .timer-box{
+    flex: 2 1 460px;
+    align-self: center;
+  }
+  .timer-section .controls{
+    flex: 1 1 260px;
+    align-self: center;
+  }
+}
+
 .level-box{
   width: min(92vw, 880px);
   border-color: var(--gb-mid) !important;
@@ -330,40 +384,4 @@ body.gameboy{
   background: transparent;
   border: 0;
   padding: 0;
-}
-/* --- 完美手機自動排版系統 --- */
-@media (max-width: 600px) {
-    /* 1. 讓外框自動適應螢幕，留出一點邊距才美觀 */
-    .container {
-        width: 92% !important;
-        max-width: none !important;
-        margin: 10px auto !important;
-        padding: 15px !important;
-        box-sizing: border-box !important;
-    }
-
-    /* 2. 讓按鈕區變成「自動流動」模式 */
-    .button-group, .controls, .settings-grid { 
-        display: flex !important;
-        flex-wrap: wrap !important; /* 核心：空間不夠自動換下一行 */
-        justify-content: space-around !important; /* 讓按鈕均勻分散 */
-        gap: 12px !important; /* 按鈕之間的舒適間距 */
-    }
-
-    /* 3. 讓按鈕大小「剛剛好」 */
-    /* 在小手機會一排一個，在大手機會自動變一排兩個 */
-    button {
-        flex: 1 1 120px !important; /* 寬度最少 120px，會自動填滿剩餘空間 */
-        min-height: 48px !important; /* 符合人體工學的點擊高度 */
-        font-size: 15px !important;
-        padding: 8px 5px !important;
-        margin: 0 !important;
-    }
-
-    /* 4. 修正計時器區塊，確保不超出螢幕 */
-    .timer-display {
-        font-size: 1.5rem !important;
-        width: 100% !important;
-        overflow-x: hidden !important;
-    }
 }
