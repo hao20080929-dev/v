@@ -70,7 +70,7 @@ body.gameboy{
 }
 
 .timer-box{
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
@@ -78,8 +78,8 @@ body.gameboy{
   border-color: var(--gb-mid) !important;
   box-shadow: inset 0 0 0 2px var(--gb-shadow);
   background: rgba(7,28,7,.35);
-  width: fit-content;
-  max-width: 92vw;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .scale-label{
@@ -284,7 +284,7 @@ body.gameboy{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 52vw;
+  max-width: 100%;
 }
 
 .btn-compact{
@@ -306,8 +306,14 @@ body.gameboy{
   gap: 16px;
 }
 
+.timer-section > .timer-header,
+.timer-section > .timer-box,
+.timer-section > .controls{
+  width: 100%;
+}
+
 .timer-display{
-  font-size: clamp(1.8rem, 10vw, 6rem);
+  font-size: clamp(1.4rem, 12vw, 5rem);
   width: 100%;
   text-align: center;
   font-weight: bold;

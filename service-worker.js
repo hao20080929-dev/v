@@ -1,4 +1,4 @@
-const CACHE = 'exp-timer-v7';
+const CACHE = 'exp-timer-v8';
 const CORE = [
   './',
   './index.html',
