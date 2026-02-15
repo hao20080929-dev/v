@@ -269,6 +269,7 @@ body.gameboy{
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .active-item{
@@ -341,6 +342,29 @@ body.gameboy{
   }
 }
 
+@media (max-width: 480px){
+  .timer-header{
+    gap: 8px;
+  }
+  #btn-back{
+    flex: 0 0 auto;
+    order: 0;
+  }
+  .timer-header .active-item{
+    order: 1;
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+  .timer{
+    letter-spacing: 2px;
+  }
+  .timer-display{
+    font-size: clamp(1.2rem, 10vw, 4.2rem);
+  }
+  .controls .nes-btn{
+    min-width: 0;
+  }
+}
 .level-box{
   width: min(92vw, 880px);
   border-color: var(--gb-mid) !important;
