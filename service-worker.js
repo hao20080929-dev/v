@@ -1,8 +1,8 @@
-const CACHE = 'exp-timer-v10';
+const CACHE = 'exp-timer-v11';
 const CORE = [
   './',
   './index.html',
-  './style.css?v=1.1',
+  './style.css?v=1.2',
   './main.js',
   './manifest.json',
   './icon.svg'
