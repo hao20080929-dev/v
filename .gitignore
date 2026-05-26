@@ -1,0 +1,13 @@
+# 隱私金鑰
+.env
+
+# Python 快取
+__pycache__/
+*.pyc
+
+# 產出的 PDF 報告 (保持倉庫乾淨)
+Outputs/
+
+# 測試檔案
+test_api.py
+test_output.txt
